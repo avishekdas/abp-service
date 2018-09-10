@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Core Online Tutorial - List Vendors</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(vendors)}">
+        <h2>Vendor List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Vendor Code</th>
+                <th>Security Deposit</th>
+                <th>GST Number</th>
+                <th>PAN Number</th>
+                <th>Category</th>
+                <th>List</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="vendor : ${vendors}">
+                <td th:text="${vendor.id}"></td>
+                <td th:text="${vendor.name}"></td>
+                <td th:text="${vendor.vendorcode}"></td>
+                <td th:text="${vendor.securitydeposit}"></td>
+                <td th:text="${vendor.gstno}"></td>
+                <td th:text="${vendor.pan}"></td>
+                <td th:text="${vendor.category}"></td>
+                <td><a th:href="${'/vendor/show/' + vendor.id}">View</a> </td>
+                <td><a th:href="${'/vendor/edit/' + vendor.id}">Edit</a> </td>
+                <td><a th:href="${'/vendor/delete/' + vendor.id}">Delete</a> </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/vendor/new">New Vendor</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

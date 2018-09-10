@@ -1,0 +1,1 @@
+This is a sample applicaiton for Vendor availability management
